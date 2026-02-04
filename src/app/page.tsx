@@ -13,7 +13,6 @@ export default function Home() {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {/* HERO */}
         <motion.section
-          variants={fadeUp}
           initial="hidden"
           animate="show"
           className="relative md:col-span-2 neo-card p-6"
@@ -59,7 +58,6 @@ export default function Home() {
 
         {/* CONNECT */}
         <motion.section
-          variants={fadeUpScroll}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.2 }} className="neo-card p-6">
@@ -79,7 +77,6 @@ export default function Home() {
 
         {/* ABOUT */}
         <motion.section
-          variants={fadeUpScroll}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.2 }} className="md:col-span-2 neo-card p-6">
@@ -107,7 +104,6 @@ export default function Home() {
 
         {/* CODING SETUP */}
         <motion.section
-          variants={fadeUpScroll}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.2 }}
@@ -145,7 +141,6 @@ export default function Home() {
 
         {/* EXPERIENCE */}
         <motion.section
-          variants={fadeUpScroll}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.2 }}
@@ -155,7 +150,6 @@ export default function Home() {
 
         {/* TECH STACK */}
         <motion.section
-          variants={fadeUpScroll}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.2 }}
@@ -166,7 +160,6 @@ export default function Home() {
 
       {/* CTA */}
       <motion.section
-        variants={fadeUpScroll}
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.2 }}
