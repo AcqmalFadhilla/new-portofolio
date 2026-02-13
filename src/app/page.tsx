@@ -4,8 +4,7 @@ import TechStack from "@/components/TechStack";
 import CTA from "@/components/CTA";
 import RotatingText from "@/components/RotatingText";
 import { motion } from "framer-motion";
-import { fadeUp, fadeUpScroll } from "@/lib/motion";
-
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -64,13 +63,20 @@ export default function Home() {
           <h3 className="neo-badge bg-blue-300 inline-block mb-4">CONNECT</h3>
 
           <div className="grid grid-cols-2 gap-4">
-            {["Portofolio", "LinkedIn", "Resume", "GitHub"].map((item) => (
-              <div
-                key={item}
-                className="neo-card p-6 text-center font-semibold cursor-pointer hover:translate-x-1 hover:translate-y-1 transition"
+            {[
+              { label: "Portfolio", href: "/" },
+              { label: "LinkedIn", href: "https://www.linkedin.com/in/muh-acqmal-fadhilla-latief/" },
+              { label: "Resume", href: "/Resume.pdf" },
+              { label: "GitHub", href: "https://github.com/AcqmalFadhilla" },
+            ].map((item) => (
+              <Link
+                key={item.label}
+                href={item.href}
+                target={item.href.startsWith("http") ? "_blank" : undefined}
+                className="neo-card p-6 text-center font-semibold hover:translate-x-1 hover:translate-y-1 transition"
               >
-                {item}
-              </div>
+                {item.label}
+              </Link>
             ))}
           </div>
         </motion.section>
@@ -79,28 +85,39 @@ export default function Home() {
         <motion.section
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true, amount: 0.2 }} className="md:col-span-2 neo-card p-6">
+          viewport={{ once: true, amount: 0.2 }}
+          className="md:col-span-2 neo-card p-6"
+        >
           <h3 className="neo-badge bg-yellow-300 inline-block mb-4">
             ABOUT ME
           </h3>
 
           <p className="leading-relaxed">
-            iOS Developer focused on creating{" "}
             <span className="bg-orange-200 px-1 font-semibold">
-              user-friendly mobile applications
+              Machine Learning & iOS Developer
             </span>{" "}
-            with SwiftUI and UIKit.
+            with strong foundations from the Apple Developer Academy, focused on building
+            end-to-end, production-ready solutions — from problem research and data
+            preparation to model development, deployment, and mobile integration.
           </p>
 
           <p className="mt-4">
-            Currently at{" "}
+            Currently developing iOS applications using{" "}
             <span className="bg-purple-200 px-1 font-semibold">
-              nbs.co.id
-            </span>{" "}
-            building production iOS apps with Clean Architecture,
-            RxSwift/Combine, and modern CI/CD.
+              SwiftUI & SwiftData
+            </span>
+            , applying clean code principles, MVVM-based architecture, and advanced iOS
+            features such as PhotoKit, while integrating machine learning models into
+            real-world products.
+          </p>
+
+          <p className="mt-4">
+            Experienced as a Machine Learning Engineer in dataset collection and
+            preprocessing, model training and deployment, as well as mentoring teams and
+            leading technical sessions to ensure on-time delivery.
           </p>
         </motion.section>
+
 
         {/* CODING SETUP */}
         <motion.section
