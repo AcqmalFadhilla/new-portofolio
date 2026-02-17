@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import TimelineItem from "@/components/TimelineItem";
+import TimelineItem from "@/components/ExperienceTimelineItem";
 import { experiences } from "@/data/experiences";
 
 export default function ExperienceTimeline() {

@@ -1,52 +1,54 @@
 export type ProjectRole = "ios" | "ml" | "fullstack";
 
+export type demoPoint = {
+    video: string;
+    appstore: string;
+    link: string;
+};
+
+
 export type Project = {
     slug: string;
     title: string;
-    role: ProjectRole;
+    role: ProjectRole[];
     roleLabel: string;
-
-    description: string;
+    coverImage: string;
+    images: string[];
+    overview: string;
+    goal: string;
     problem: string;
     solution: string;
+    myContributions: string[];
+    challengesSolutions: string[];
+    impact: string[];
     stack: string[];
+    demo: demoPoint[];
+    conclusion: string;
 };
 
 export const projects: Project[] = [
     {
         slug: "Racqee",
         title: "Racqee",
-        role: "ios",
+        role: ["ios", "ml"],
         roleLabel: "iOS + ML Engineer",
-        description: "-",
+        coverImage: "/racqee-cover.webp",
+        images: ["/racqee-cover.webp", "/racqee-cover.webp", "/racqee-cover.webp"],
+        overview: "A sports photo app that automatically captures your best action moments while playing racket sports, using pose detection to recognize key movements and snap photos right at the perfect time.",
+        goal: "-",
         problem:
             "-",
         solution:
-            "Built an iOS app using on-device ML to classify ingredients instantly with offline support.",
+            "-",
+        myContributions: ["-"],
+        challengesSolutions: ["-"],
+        impact: ["-"],
         stack: ["SwiftUI", "CoreML", "Vision", "SwiftData"],
-    },
-    {
-        slug: "yolo-realtime-detection",
-        title: "YOLO Real-time Detection",
-        role: "ml",
-        roleLabel: "Machine Learning Engineer",
-        description: "Real-time object detection pipeline on iOS camera.",
-        problem:
-            "Need real-time detection with low latency on mobile devices.",
-        solution:
-            "Integrated YOLO with Vision + AVCaptureSession for smooth real-time inference.",
-        stack: ["YOLOv8", "Vision", "AVFoundation"],
-    },
-    {
-        slug: "neo-portfolio",
-        title: "Neo-Brutalist Portfolio",
-        role: "fullstack",
-        roleLabel: "Full Stack Engineer",
-        description: "Motion-first Neo-Brutalist personal website.",
-        problem:
-            "Generic portfolios fail to show personality and engineering taste.",
-        solution:
-            "Designed a Neo-Brutalist UI with strong motion and clear information hierarchy.",
-        stack: ["Next.js", "Tailwind", "Framer Motion"],
-    },
+        demo: [{
+            video: "-",
+            appstore: "-",
+            link: "-"
+        }],
+        conclusion: "-"
+    }
 ];

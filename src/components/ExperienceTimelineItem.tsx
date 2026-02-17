@@ -7,7 +7,6 @@ type TimelineItemProps = {
 };
 
 
-
 export default function TimelineItem({
     color,
     title,

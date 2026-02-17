@@ -64,7 +64,7 @@ export default function Home() {
 
           <div className="grid grid-cols-2 gap-4">
             {[
-              { label: "Portfolio", href: "/" },
+              { label: "Portfolio", href: "/portfolio" },
               { label: "LinkedIn", href: "https://www.linkedin.com/in/muh-acqmal-fadhilla-latief/" },
               { label: "Resume", href: "/Resume.pdf" },
               { label: "GitHub", href: "https://github.com/AcqmalFadhilla" },

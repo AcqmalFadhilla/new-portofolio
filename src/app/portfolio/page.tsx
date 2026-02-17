@@ -4,6 +4,9 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import CTA from "@/components/CTA";
 import { projects, ProjectRole } from "@/data/projects";
+import { getTechStyle } from "@/lib/getTechStyle";
+
+import Image from "next/image";
 
 const roles: { label: string; value: ProjectRole | "all" }[] = [
     { label: "All", value: "all" },
@@ -12,16 +15,35 @@ const roles: { label: string; value: ProjectRole | "all" }[] = [
     { label: "Full Stack", value: "fullstack" },
 ];
 
+const roleLabels = {
+    ios: "iOS Engineer",
+    ml: "ML Engineer",
+    fullstack: "Fullstack Engineer"
+};
+
+const roleStyles = {
+    ios: "bg-blue-300",
+    ml: "bg-purple-300",
+    fullstack: "bg-green-300"
+};
+
 export default function PortfolioPage() {
     const [activeRole, setActiveRole] = useState<ProjectRole | "all">("all");
 
     const filtered =
         activeRole === "all"
             ? projects
-            : projects.filter((p) => p.role === activeRole);
+            : projects.filter((p) => p.role.includes(activeRole as ProjectRole));
 
     return (
         <main className="max-w-6xl mx-auto p-6">
+            {/* BACK BUTTON */}
+            <Link
+                href="/"
+                className="neo-pill inline-block mb-6 bg-blue-200 hover:translate-x-1 transition"
+            >
+                ← Back to Home
+            </Link>
             {/* HEADER */}
             <motion.section
                 initial={{ opacity: 0, y: 30 }}
@@ -60,32 +82,47 @@ export default function PortfolioPage() {
                         viewport={{ once: true }}
                         transition={{ delay: idx * 0.05 }}
                         className="neo-card p-6 hover:translate-x-1 hover:translate-y-1 transition">
+                        {/* COVER IMAGE */}
+                        <div className="relative w-full aspect-[16/9] mb-4 neo-border overflow-hidden">
+                            <Image
+                                src={project.coverImage}
+                                alt={project.title}
+                                fill
+                                className="object-contain"
+                            />
+                        </div>
                         <h3 className="text-2xl font-extrabold mb-2">
                             {project.title}
                         </h3>
 
-                        <span className="neo-badge bg-purple-300 inline-block mb-3">
-                            {project.role}
-                        </span>
-
-                        <p className="mb-4">{project.description}</p>
-
-
+                        <div className="mb-3 flex gap-2 flex-wrap">
+                            {project.role.map((role) => (
+                                <span
+                                    key={role}
+                                    className={`neo-badge ${roleStyles[role]}`}
+                                >
+                                    {roleLabels[role]}
+                                </span>
+                            ))}
+                        </div>
+                        <p className="mb-4 line-clamp-2">{project.overview}</p>
                         <div className="flex flex-wrap gap-2 mb-5">
                             {project.stack.map((tech) => (
                                 <span
                                     key={tech}
-                                    className="neo-pill bg-yellow-200 neo-tilt-soft">
+                                    className={`neo-pill ${getTechStyle(tech)}`}>
                                     {tech}
                                 </span>
                             ))}
                         </div>
+                        <div className="mt-auto flex justify-end">
+                            <Link
+                                href={`/portfolio/${project.slug}`}
+                                className="neo-pill bg-blue-300 inline-block">
+                                View Case Study →
+                            </Link>
+                        </div>
 
-                        <Link
-                            href={`/portfolio/${project.slug}`}
-                            className="neo-badge bg-blue-300 inline-block">
-                            View Case Study →
-                        </Link>
                     </motion.article>
                 ))
                 }
@@ -99,6 +136,6 @@ export default function PortfolioPage() {
                 className="neo-card bg-yellow-300 p-6 mt-10">
                 <CTA />
             </motion.section>
-        </main>
+        </main >
     );
 }
