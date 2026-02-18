@@ -1,6 +1,13 @@
+type ChallengeSolutionPoint = {
+    challange: string;
+    solustion: string;
+};
+
+type Item = string | ChallengeSolutionPoint;
+
 type CaseStudyItemProps = {
     title: string;
-    items: string[];
+    items: Item[];
     color?: string;
 };
 
@@ -26,22 +33,42 @@ export default function CaseStudyItem({
             {/* CARD */}
             <div className="neo-card p-5">
 
-                <h4 className="font-extrabold mb-2">
+                <h4 className="font-extrabold mb-4">
                     {title}
                 </h4>
 
-                <ul className="list-disc pl-5 space-y-2 text-sm">
+                <ul className="space-y-3 text-sm">
 
-                    {items.map((item, index) => (
-                        <li key={index}>
-                            {item}
-                        </li>
-                    ))}
+                    {items.map((item, index) => {
+
+                        // CASE 1: string
+                        if (typeof item === "string") {
+                            return (
+                                <li key={index} className="list-disc ml-5">
+                                    {item}
+                                </li>
+                            );
+                        }
+
+                        // CASE 2: challenge solution object
+                        return (
+                            <li key={index} className="ml-1">
+                                <div className="font-semibold">
+                                    <span >Challange:</span> {item.challange}
+                                </div>
+                                <div>
+                                    <span className="font-semibold">Solustion:</span> {item.solustion}
+                                </div>
+
+                            </li>
+                        );
+
+                    })}
 
                 </ul>
 
             </div>
 
-        </div>
+        </div >
     );
 }

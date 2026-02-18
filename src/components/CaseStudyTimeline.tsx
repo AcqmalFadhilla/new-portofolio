@@ -3,9 +3,14 @@
 import { motion } from "framer-motion";
 import CaseStudyItem from "@/components/CaseStudyItem";
 
+type ChallengeSolutionPoint = {
+    challange: string;
+    solustion: string;
+};
+
 type Block = {
     title: string;
-    items: string[];
+    items: (string | ChallengeSolutionPoint)[];
     color?: string;
 };
 
@@ -17,13 +22,12 @@ export default function CaseStudyTimeline({ blocks }: Props) {
     return (
         <section className="neo-card p-6">
 
-            <h3 className="neo-badge bg-purple-300 inline-block mb-8">
+            <h3 className="neo-badge bg-sky-300 inline-block mb-8">
                 CASE STUDY DETAILS
             </h3>
 
             <div className="relative">
 
-                {/* vertical line */}
                 <div className="absolute left-5 top-0 bottom-0 w-[4px] bg-black" />
 
                 <div className="space-y-10">

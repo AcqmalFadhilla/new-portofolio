@@ -40,12 +40,29 @@ export default function CaseStudyPage({ params }: Props) {
                 <p className="mt-4 text-lg">{project.overview}</p>
             </section>
 
+            {/* GOAL */}
+            <section className="neo-card p-6 mb-6">
+                <h3 className="neo-badge bg-emerald-300 inline-block mb-3">
+                    GOAL
+                </h3>
+                <p>{project.goal}</p>
+            </section>
+
             {/* PROBLEM */}
             <section className="neo-card p-6 mb-6">
-                <h3 className="neo-badge bg-red-300 inline-block mb-3">
+                <h3 className="neo-badge bg-red-300 inline-block mb-2">
                     PROBLEM
                 </h3>
-                <p>{project.problem}</p>
+
+                <p className="mb-4">{project.problem.intro}</p>
+
+                <ul className="list-disc pl-6 space-y-2 mb-2">
+                    {project.problem.points.map((point, i) => (
+                        <li key={i}>{point}</li>
+                    ))}
+                </ul>
+
+                <p>{project.problem.conclusion}</p>
             </section>
 
             {/* SOLUTION */}
